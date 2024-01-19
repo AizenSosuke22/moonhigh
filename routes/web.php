@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SaleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,14 @@ Route::delete('/categories/delete/{id}', [CategoryController::class, 'destroy'])
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/create', [ProductController::class, 'create']);
 Route::post('/products/create', [ProductController::class, 'store']);
+Route::get('/products/edit/{id}', [ProductController::class, 'edit']);
+Route::put('/products/edit/{id}', [ProductController::class, 'update']);
 Route::delete('/products/delete/{id}', [ProductController::class, 'destroy']);
+
+Route::get('/sales', [SaleController::class, 'index']);
+Route::get('/sales/create/{id}', [SaleController::class, 'edit']);
+Route::post('/sales/create/{id}', [SaleController::class, 'update']);
+Route::delete('/sales/delete/{id}', [SaleController::class, 'destroy']);
 
 
 Route::get('/dashboard', function () {

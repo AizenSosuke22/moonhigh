@@ -16,21 +16,34 @@
             'resources/js/menu.js',
         ]
     )  
+
+    <style>
+        .active{
+            font-weight: 600 !important;
+            background: #f3f3fb !important;
+            color: black !important;
+        }
+
+        .active i{
+            color: black !important;
+        }
+    </style>
 </head>
 <body class="font-readex">
     <div class="flex relative" dir="rtl">
-        <div class="w-[250px] h-screen fixed top-0 right-0 border-l-[1px] px-[30px] py-[10px] flex flex-col">
+        <div class="sm:w-0 overflow-x-hidden md:w-[250px] h-screen fixed top-0 right-0 border-l-[1px] md:px-[30px] py-[10px] flex flex-col">
             <div class="flex items-center gap-x-2 pt-4 text-[#0c0b36] justify-center">
-                <!-- <i class="fa-solid fa-cube text-[26px]"></i> -->
                 <h1 class="font-[600] text-[18px]">القمر العالي</h1>
             </div>
             <div class="h-full pt-[40px] flex flex-col">
-                <div class="h-full ">
+
+                <div class="h-full">
                     <div class="mb-[10px]"></div>
                     <p class="font-[500] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md">القائمة الرئيسية</p>
-                    <a class="font-[600] bg-[#f3f3fb] text-black text-[13px] flex items-center px-[14px] py-[10px] rounded-md mb-2 mt-2" href="#"><i class="fa-solid fa-layer-group text-[17px] ml-[10px]"></i> التصنيفات</a>
-                    <a class="font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-cube text-[#b6b6c9] text-[17px] ml-[10px]"></i> الخدمات</a>
-                    <a class="font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gift text-[#b6b6c9] text-[17px] ml-[10px]"></i> التخفيضات</a>
+                    <!-- <a class="font-[600] bg-[#f3f3fb] text-black text-[13px] flex items-center px-[14px] py-[10px] rounded-md mb-2 mt-2" href="#"><i class="fa-solid fa-layer-group text-[17px] ml-[10px]"></i> التصنيفات</a> -->
+                    <a class="{{ request()->is('categories', 'categories/*') ? 'active': '' }} font-[500] text-[#5c5c5c] text-[13px] flex items-center px-[14px] py-[10px] rounded-md mb-2 mt-2" href="{{ url('/categories') }}"><i class="fa-solid fa-layer-group text-[#b6b6c9] text-[17px] ml-[10px]"></i> التصنيفات</a>
+                    <a class="{{ request()->is('products', 'products/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/products') }}"><i class="fa-solid fa-cube text-[#b6b6c9] text-[17px] ml-[10px]"></i> الخدمات</a>
+                    <a class="{{ request()->is('sales', 'sales/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/sales') }}"><i class="fa-solid fa-gift text-[#b6b6c9] text-[17px] ml-[10px]"></i> التخفيضات</a>
 
                 </div>
                 <div class="h-fit">
@@ -38,6 +51,12 @@
                     <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</a>
                 </div>
             </div>
+        </div>
+        <div class="absolute bg-red-600 top-0 w-full h-screen left-0 z-[1000]">
+
+        </div>
+        <div class="pt-[30px]">
+            <a href="" class="sm:flex md:hidden cursor-pointer size-[35px] bg-[#f9f9f9] rounded-lg mr-4 justify-center items-center text-[14px]"><i class="fa-solid fa-bars"></i></a>
         </div>
         @yield('body')
     </div>

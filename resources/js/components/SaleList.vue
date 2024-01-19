@@ -1,34 +1,24 @@
 <template>
     <div>
-        <div class="flex gap-x-2 items-center mb-2">
-            <h1 class="text-[14px] font-[500]">الاسم :</h1>
-            <input v-model="title" type="text" class="max-w-[200px] border h-fit text-[14px] px-4 py-2 rounded-md bg-[#f0f0f041] mt-2 outline-none">
-        </div>
         <div class="w-full font-poppins overflow-x-scroll noscroll">
             <table class="w-full min-w-[600px] border-separate border-spacing-y-4">
               <thead class="bg-[#f9f9f9]">
                   <tr class="*:text-right *:font-[600] text-[13px] *:py-2 *:px-4">
                       <th class="rounded-r-lg">#</th>
-                      <th>الصورة</th>
-                      <th>الاسم</th>
-                      <th>الثمن</th>
-                      <th>النوع</th>
+                      <th>المنتج</th>
+                      <th>الثمن الاصلي</th>
+                      <th>الثمن بعد التخفيض</th>
                       <th class="rounded-l-lg">إعدادات</th>
                   </tr>
               </thead>
               <tbody>
-                  <tr v-for="(item, index) in filteredData" :key="item.id" class="*:py-4 *:px-4 font-[500] text-[14px]">
+                  <tr v-for="(item, index) in sales.slice(start, end)" :key="item.id" class="*:py-4 *:px-4 font-[500] text-[14px]">
                     <td class="font-[600]">{{ index+1 }}</td>
-                    <td>
-                        <img class="w-[100px] h-[100px] object-cover block rounded-md" :src="item.cover" alt="">
-                    </td>
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price }}</td>
                     <td>{{ item.price }}</td>
-                    <td>{{ item.type }}</td>
                     <td>
                         <div class="flex items-center">
-                            <a :href="'/sales/create/'+item.id" class="text-[#262b45] block font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-percent ml-2"></i>تخفيض</a>
-                            <a :href="'/products/edit/'+item.id" class="text-[#262b45] block font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-pen ml-2"></i>تعديل</a>
                             <div @click="deletec(item.id)" class="text-[#262b45] font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-trash ml-2"></i>مسح</div>
                         </div>
                     </td>
@@ -37,7 +27,7 @@
             </table>
         </div>
         <div class="flex items-center justify-between">
-          <p class="text-[14px]">عرض {{ start+1 }}-{{ end > products.length ? products.length : end }} من {{ products.length }}</p>
+          <p class="text-[14px]">عرض {{ start+1 }}-{{ end > sales.length ? sales.length : end }} من {{ sales.length }}</p>
           <div class="w-fit flex">
               <div @click="previous()" class="px-[13px] text-[14px] cursor-pointer py-1 rounded-md bg-[#f3f4f6] w-fit ml-2">
                   <i class="fa-solid fa-angle-right"></i>
@@ -51,29 +41,20 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, computed } from 'vue'
+  import { ref, onMounted } from 'vue'
   const props = defineProps(['data'])
-  const products = ref([])
-  const title = ref('')
+  const sales = ref([])
 
   const start = ref(0)
   const perpage = ref(20)
   const end = ref(perpage.value)
 
   onMounted(() => {
-    products.value = props.data
-  })
-
-  const filteredData = computed(() => {
-    console.log(title.value)
-    start.value = 0
-    perpage.value = 20
-    end.value = perpage.value
-    return products.value.filter((item) => item.name.includes(title.value))
+    sales.value = props.data
   })
 
   const next = () => {
-    if(products.value.length > end.value){
+    if(sales.value.length > end.value){
         start.value += perpage.value 
         end.value += perpage.value 
     }
@@ -87,7 +68,7 @@
   }
 
   const deletec = (itemId) => {
-      fetch(`/products/delete/${itemId}`, {
+      fetch(`/sales/delete/${itemId}`, {
           method: 'DELETE',
           headers: {
               'Content-Type': 'application/json',
@@ -98,7 +79,7 @@
         window.location.reload()
       })
       .catch(error => {
-          // console.error('Error:', error)
+          // console.error('Error:', error);
       });
   }
 
