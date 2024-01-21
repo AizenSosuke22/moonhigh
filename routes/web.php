@@ -21,6 +21,14 @@ Route::get('/', function () {
     return view('client.home');
 });
 
+Route::get('/services', function () {
+    return view('client.service');
+});
+
+Route::get('/promotion', function () {
+    return view('client.promotion');
+});
+
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::get('/categories/create', [CategoryController::class, 'create']);
 Route::post('/categories/create', [CategoryController::class, 'store']);

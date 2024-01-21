@@ -13,6 +13,7 @@ import ProServices from './components/ProServices.vue'
 import CategoryList from './components/CategoryList.vue'
 import ServiceList from './components/ServiceList.vue'
 import SaleList from './components/SaleList.vue'
+import ProductsList from './components/ProductsList.vue'
 
 const app = createApp()
 
@@ -23,5 +24,6 @@ app.component('proservices', ProServices)
 app.component('categorylist', CategoryList)
 app.component('servicelist', ServiceList)
 app.component('salelist', SaleList)
+app.component('productslist', ProductsList)
 
 app.mount('#app')
