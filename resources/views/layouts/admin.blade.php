@@ -56,10 +56,13 @@
                     <a class="{{ request()->is('categories', 'categories/*') ? 'active': '' }} font-[500] text-[#5c5c5c] text-[13px] flex items-center px-[14px] py-[10px] rounded-md mb-2 mt-2" href="{{ url('/categories') }}"><i class="fa-solid fa-layer-group text-[#b6b6c9] text-[17px] ml-[10px]"></i> التصنيفات</a>
                     <a class="{{ request()->is('products', 'products/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/products') }}"><i class="fa-solid fa-cube text-[#b6b6c9] text-[17px] ml-[10px]"></i> الخدمات</a>
                     <a class="{{ request()->is('sales', 'sales/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/sales') }}"><i class="fa-solid fa-gift text-[#b6b6c9] text-[17px] ml-[10px]"></i> التخفيضات</a>
+                    <a class="{{ request()->is('newsletter') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/newsletter') }}"><i class="fa-solid fa-envelope text-[#b6b6c9] text-[17px] ml-[10px]"></i> لائحة الزبناء</a>
 
                 </div>
                 <div class="h-fit">
-                    <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
+                    <!-- <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a> -->
+                    <a class="{{ request()->is('settings') ? 'active': '' }} font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/settings') }}"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
+                    <!-- <a class="{{ request()->is('settings') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/settings') }}"><i class="fa-solid fa-gear text-[#b6b6c9] text-[17px] ml-[10px]"></i> الإعدادات</a> -->
                     <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</a>
                 </div>
             </div>
@@ -78,10 +81,12 @@
                     <a class="{{ request()->is('categories', 'categories/*') ? 'active': '' }} font-[500] text-[#5c5c5c] text-[13px] flex items-center px-[14px] py-[10px] rounded-md mb-2 mt-2" href="{{ url('/categories') }}"><i class="fa-solid fa-layer-group text-[#b6b6c9] text-[17px] ml-[10px]"></i> التصنيفات</a>
                     <a class="{{ request()->is('products', 'products/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/products') }}"><i class="fa-solid fa-cube text-[#b6b6c9] text-[17px] ml-[10px]"></i> الخدمات</a>
                     <a class="{{ request()->is('sales', 'sales/*') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/sales') }}"><i class="fa-solid fa-gift text-[#b6b6c9] text-[17px] ml-[10px]"></i> التخفيضات</a>
+                    <a class="{{ request()->is('newsletter') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/newsletter') }}"><i class="fa-solid fa-envelope text-[#b6b6c9] text-[17px] ml-[10px]"></i> لائحة الزبناء</a>
 
                 </div>
                 <div class="h-fit">
-                    <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
+                    <!-- <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a> -->
+                    <a class="{{ request()->is('settings') ? 'active': '' }} font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
                     <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</a>
                 </div>
             </div>

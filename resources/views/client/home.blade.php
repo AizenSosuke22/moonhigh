@@ -28,7 +28,7 @@
             </div>
         </div>
     </header>
-    <main id="app">
+    <main>
         <!--ابرز الخدمات-->
         <section class="w-full sm:py-[40px] md:py-[70px]">
             <h1 class="text-center text-black font-bold md:text-[20px] lg:text-[22px] xl:text-[25px]">أبرز الخدمات</h1>
@@ -116,7 +116,7 @@
             </div>
         </section>
 
-        <section class="w-full sm:pb-[40px] md:pb-[70px] flex items-center justify-between gap-x-[20px] px-[20px]" dir="rtl">
+        <section class="sm:w-full xl:w-[90%] mx-auto sm:pb-[40px] md:pb-[70px] flex items-center justify-between gap-x-[20px] px-[20px]" dir="rtl">
             <features />
         </section>
 

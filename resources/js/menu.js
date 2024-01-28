@@ -1,10 +1,41 @@
 $(document).ready(function(){
     const list = [
         {
-            title: 'المنتجات',
+            title: 'خدمات الشعر',
             items: [
-                'منتجات الشعر',
-                'منتجات البشرة',
+                'تساريح الشعر',
+                'صبغات الشعر',
+                'العناية بالشعر'
+            ]
+        },
+        {
+            title: 'المعالجات',
+            items: [
+                'المعالجات الحارة',
+                'المعالجات الباردة'
+            ]
+        },
+        {
+            title: 'المكياج',
+            items: [
+                'مكياج أساسي',
+                'مكياج مؤقت'
+            ]
+        },
+        {
+            title: 'قسم العناية',
+            items: [
+                'عناية بالأيدي والأرجل',
+                'حمام مغربي',
+                'تنظيف البشرة',
+                'إزالة الشعر'
+            ]
+        },
+        {
+            title: 'بكجات العروس',
+            items: [
+                'الملكة',
+                'عروس VIP'
             ]
         }
     ]
@@ -15,11 +46,11 @@ $(document).ready(function(){
         const find = list.find(item => item.title == $(this).text().trim())
         $('#menutitle').text($(this).text().trim())
         $('#menuul').html(`
-            <li class="block py-[18px] px-4 border-b"><a class="block" href="#">عرض الكل</a></li>
+            <li class="block py-[18px] px-4 border-b"><a class="block" href="/services/${$(this).text().trim()}">عرض الكل</a></li>
         `)
         find.items.forEach((item) => {
             $('#menuul').append(`
-                <li class="block py-[18px] px-4 border-b"><a href="#">${item}</a></li>
+                <li class="block py-[18px] px-4 border-b"><a href="/services/${item}">${item}</a></li>
             `)
         })
     })

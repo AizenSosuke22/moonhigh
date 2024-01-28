@@ -24,7 +24,7 @@
         @foreach($errors->all() as $error)
             <h1 class="text-[12px] font-[600] w-fit text-[red]">{{ $error }}</h1>
         @endforeach
-        <input type="hidden" name="id" value="{{ $product->id }}">
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
         <div class="my-4">
           <label for="" class="text-[14px]">الخدمة</label>
           <input type="text" name="name" disabled value="{{ $product->name }}" class="w-full border h-fit text-[15px] px-4 py-2 rounded-md bg-[#f0f0f041] mt-2 outline-none">

@@ -23,14 +23,21 @@ class SaleController extends Controller
         return view('admin.sale.list', compact('data'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function promotions($type, $category)
     {
-        //
+        $sales = Sale::whereHas('product', function($query) use ($category, $type){
+            $query->where('type', $type)->whereHas('categories', function($query) use ($category){
+                $query->where('name', $category);
+            });
+        })->get();
+        $sales->load('product.sale');
+        $services = [];
+        foreach($sales as $sale){
+            $services[] = $sale->product;
+        }
+        $services = collect($services);
+        return view('client.service', compact('services', 'category'));
     }
 
     /**
@@ -83,10 +90,12 @@ class SaleController extends Controller
         try{
             $validator = Validator::make($request->all(), [
                 'price' => 'required|numeric',
+                'product_id' => 'unique:sale' 
             ],
             [
                 'price.required' => 'السعر مطلوب.',
                 'price.numeric' => 'السعر يجب أن يكون رقمًا.',
+                'product_id.unique' => 'هذه الخدمة موجودة بالفعل في التخفيضات.',
             ]);
 
             if ($validator->fails()) {
@@ -116,7 +125,7 @@ class SaleController extends Controller
     public function destroy($id)
     {
         try{
-            $product = Product::findOrFail($id);
+            $product = Sale::findOrFail($id);
             $product->delete();
             return redirect('/sales');
         }catch (ModelNotFoundException $e){

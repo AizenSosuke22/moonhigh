@@ -51,7 +51,7 @@
         }
     </style>
 </head>
-<body class="font-readex">
+<body class="font-readex" id="app">
 
     <div id="mainmenu" class="sm:hidden lg:hidden fixed z-[1000] w-full h-full bg-[#00000046] text-[#231f1e] top-0 left-0">
         <div class="bg-white overflow-x-hidden relative sm:w-full sm:max-w-[400px] md:max-w-full md:w-[50%] h-full ml-auto" dir="rtl">
@@ -60,20 +60,29 @@
                 <i id="close" class="fa-solid fa-xmark block text-[18px] cursor-pointer"></i>
             </div>
             <ul class="block w-full h-fit *:border-[#f7f7f7] *:text-[12px] *:font-[700]">
-                <li class="block py-[18px] px-4 border-b text-[#ff5757]"><a href="#">تخفيضات</a></li>
-                <li class="block py-[18px] px-4 border-b"><a class="block" href="#">جميع الخدمات</a></li>
-                <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
-                    <h1>المنتجات</h1>
-                    <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
-                </li>
+                <li class="block py-[18px] px-4 border-b text-[#ff5757]"><a href="{{ url('/promotion') }}">تخفيضات</a></li>
+                <li class="block py-[18px] px-4 border-b"><a class="block" href="{{ url('/services') }}">جميع الخدمات</a></li>
+                <li class="block py-[18px] px-4 border-b"><a class="block" href="{{ url('/ourproducts') }}">المنتجات</a></li>
                 <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
                     <h1>خدمات الشعر</h1>
                     <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
                 </li>
-                <li class="block py-[18px] px-4 border-b">المعالجات</li>
-                <li class="block py-[18px] px-4 border-b">المكياج</li>
-                <li class="block py-[18px] px-4 border-b">قسم العناية</li>
-                <li class="block py-[18px] px-4 border-b">بكجات العروس</li>
+                <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
+                    <h1>المعالجات</h1>
+                    <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
+                </li>
+                <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
+                    <h1>المكياج</h1>
+                    <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
+                </li>
+                <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
+                    <h1>قسم العناية</h1>
+                    <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
+                </li>
+                <li class="itemdev flex items-center justify-between py-[18px] px-4 border-b cursor-pointer">
+                    <h1>بكجات العروس</h1>
+                    <i class="fa-solid fa-chevron-left text-[#999999] text-[12px]"></i>
+                </li>
             </ul>
             <div id="submenu" class="hidden absolute top-0 left-0 w-full h-full bg-[white]">
                 <div class="flex justify-between items-center py-4 px-4 border-b border-[#d9d9d9]">
@@ -90,9 +99,8 @@
     </div>
     <div class="bg-[#a288a6] text-center py-[6px] font-[600] sm:text-[12px] md:text-[14px] lg:text-[15px] px-4">دلعي نفسك بخصم <span class="text-white">30%</span> على جميع الخدمات</div>
     <div class="bg-white py-2 px-4 flex items-center justify-end">
-        <div class="sm:w-full md:w-[500px] md:mr-[26px] bg-[#eff1f3] rounded-full px-4 py-[6px] flex items-center gap-x-[12px]" dir="rtl">
-            <i class="fa-solid fa-magnifying-glass block text-[#424242]"></i>
-            <input class="border-none font-[300] text-[#ada7a5] placeholder:text-[#ada7a5] outline-none w-full block bg-transparent text-[14px]" dir="rtl" placeholder="ادخل كلمة البحث" type="search" name="" id="">
+        <div class="relative sm:w-full lg:w-[500px]">
+            <searchfield />
         </div>
         <ul class="xs:hidden lg:flex w-fit *:mx-3 text-[14px] font-[400]">            
             <li>
@@ -110,41 +118,93 @@
         <img class="block w-[40px] object-cover ml-[40px]" src="{{ url('/images/logo.png') }}" alt="">
         <ul id="mainnav" class="xs:hidden lg:flex w-fit relative *:mx-2 text-[14px] font-[500] text-white">            
             <li class="text-[#ff5757]">
-                <a href="#">تخفيضات</a>
+                <a href="{{ url('/promotion') }}">تخفيضات</a>
             </li>
             <li>
-                <a href="#">جميع الخدمات</a>
+                <a href="{{ url('/services') }}">جميع الخدمات</a>
+            </li>
+            <li>
+                <a href="{{ url('ourproducts') }}">المنتجات</a>
             </li>
             <li class="dropdown relative">
-                <a href="#" class="dropdown-toggle">المنتجات</a>
+                <a href="{{ url('/services/خدمات الشعر') }}" class="dropdown-toggle">خدمات الشعر</a>
                 <div class="dropdown-menu">
                     <ul class="overflow-hidden w-fit min-w-[220px] *:text-[12px] rounded-b-lg border-t-[1px] bg-white shadow-md">
                         <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
-                            <a class="block" href="#">تساريح الشعر</a>
+                            <a class="block" href="{{ url('/services/تساريح الشعر') }}">تساريح الشعر</a>
                         </li>
                         <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
-                            <a class="block" href="#">قصات الشعر</a>
+                            <a class="block" href="{{ url('/services/صبغات الشعر') }}">صبغات الشعر</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/العناية بالشعر') }}">العناية بالشعر</a>
                         </li>
                     </ul>
                 </div>
             </li>
-            <li>
-                <a href="#">خدمات الشعر</a>
+            <li class="dropdown relative">
+                <a href="{{ url('/services/المعالجات') }}" class="dropdown-toggle">المعالجات</a>
+                <div class="dropdown-menu">
+                    <ul class="overflow-hidden w-fit min-w-[220px] *:text-[12px] rounded-b-lg border-t-[1px] bg-white shadow-md">
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/المعالجات الحارة') }}">المعالجات الحارة</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/المعالجات الباردة') }}">المعالجات الباردة</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li>
-                <a href="#">المعالجات</a>
+            <li class="dropdown relative">
+                <a href="{{ url('/services/المكياج') }}" class="dropdown-toggle">المكياج</a>
+                <div class="dropdown-menu">
+                    <ul class="overflow-hidden w-fit min-w-[220px] *:text-[12px] rounded-b-lg border-t-[1px] bg-white shadow-md">
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/مكياج أساسي') }}">مكياج أساسي</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/مكياج مؤقت') }}">مكياج مؤقت</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li>
-                <a href="#">المكياج</a>
+            <li class="dropdown relative">
+                <a href="{{ url('/services/قسم العناية') }}" class="dropdown-toggle">قسم العناية</a>
+                <div class="dropdown-menu">
+                    <ul class="overflow-hidden w-fit min-w-[220px] *:text-[12px] rounded-b-lg border-t-[1px] bg-white shadow-md">
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/عناية بالأيدي والأرجل') }}">عناية بالأيدي والأرجل</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/حمام مغربي') }}">حمام مغربي</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/تنظيف البشرة') }}">تنظيف البشرة</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/إزالة الشعر') }}">إزالة الشعر</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
-            <li>
-                <a href="#">قسم العناية</a>
-            </li>
-            <li>
-                <a href="#">بكجات العروس</a>
+            <li class="dropdown relative">
+                <a href="{{ url('/services/بكجات العروس') }}" class="dropdown-toggle">بكجات العروس</a>
+                <div class="dropdown-menu">
+                    <ul class="overflow-hidden w-fit min-w-[220px] *:text-[12px] rounded-b-lg border-t-[1px] bg-white shadow-md">
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/الملكة') }}">الملكة</a>
+                        </li>
+                        <li class="text-black px-[25px] py-[12px] font-[300] cursor-pointer hover:bg-[#c5bfc71c]">
+                            <a class="block" href="{{ url('/services/عروس VIP') }}">عروس VIP</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
-        <a href="#" class="block mr-auto w-fit h-fit"><img class="size-[22px] object-cover" src="{{ url('/icons/user.png') }}" alt=""></a>
+        <div class="w-fit flex mr-auto gap-x-2">
+            <a href="{{ url('/wishlist') }}" class="block w-fit h-fit"><img class="size-[22px] object-cover" src="{{ url('/icons/wishlist.png') }}" alt=""></a>
+            <a href="{{ url('/login') }}" class="block w-fit h-fit"><img class="size-[22px] object-cover" src="{{ url('/icons/user.png') }}" alt=""></a>
+        </div>
         <div id="open" class="text-white flex items-center justify-center text-[20px] cursor-pointer mr-2 sm:block lg:hidden">
             <img src="{{ url('icons/menu.svg') }}" alt="">
         </div>
