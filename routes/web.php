@@ -74,6 +74,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function(){
     Route::get('/sales/create/{id}', [SaleController::class, 'edit']);
     Route::post('/sales/create/{id}', [SaleController::class, 'update']);
     Route::delete('/sales/delete/{id}', [SaleController::class, 'destroy']);
+    Route::get('/sales/add', [SaleController::class, 'create']);
+    Route::post('/sales/add', [SaleController::class, 'store']);
     
     Route::get('/newsletter', [NewsLetterController::class, 'index']);
     

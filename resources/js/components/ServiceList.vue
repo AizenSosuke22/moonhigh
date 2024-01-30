@@ -27,7 +27,7 @@
                     <td>{{ item.type }}</td>
                     <td>
                         <div class="flex items-center">
-                            <a :href="'/sales/create/'+item.id" class="text-[#262b45] block font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-percent ml-2"></i>تخفيض</a>
+                            <!-- <a :href="'/sales/create/'+item.id" class="text-[#262b45] block font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-percent ml-2"></i>تخفيض</a> -->
                             <a :href="'/products/edit/'+item.id" class="text-[#262b45] block font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-pen ml-2"></i>تعديل</a>
                             <div @click="deletec(item.id)" class="text-[#262b45] font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-trash ml-2"></i>مسح</div>
                         </div>

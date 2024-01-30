@@ -8,6 +8,7 @@
                       <th>المنتج</th>
                       <th>الثمن الاصلي</th>
                       <th>الثمن بعد التخفيض</th>
+                      <th>الثمن بعد التخفيض</th>
                       <th class="rounded-l-lg">إعدادات</th>
                   </tr>
               </thead>
@@ -17,6 +18,7 @@
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.product.price }}</td>
                     <td>{{ item.price }}</td>
+                    <td>{{ percent(item.product.price, item.price) }}</td>
                     <td>
                         <div class="flex items-center">
                             <div @click="deletec(item.id)" class="text-[#262b45] font-[600] cursor-pointer text-[13px] ml-1"><i class="fa-solid fa-trash ml-2"></i>مسح</div>
@@ -66,6 +68,12 @@
         end.value -= perpage.value 
     }
   }
+
+  const percent = (originalPrice, discountedPrice) => {
+    const discountPercentage = ((originalPrice - discountedPrice) / originalPrice) * 100;
+    const roundedPercentage = Math.round(discountPercentage * 100) / 100;
+    return roundedPercentage;
+}
 
   const deletec = (itemId) => {
       fetch(`/sales/delete/${itemId}`, {

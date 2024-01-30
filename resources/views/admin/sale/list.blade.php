@@ -9,6 +9,7 @@
         </div>
         <div class="flex">
             <a href="{{ url('/sales') }}" class="cursor-pointer size-[35px] bg-[#f9f9f9] rounded-lg mr-4 flex justify-center items-center text-[14px]"><i class="fa-solid fa-database"></i></a>
+            <a href="{{ url('/sales/add') }}" class="cursor-pointer size-[35px] bg-[#f9f9f9] rounded-lg mr-4 flex justify-center items-center text-[14px]"><i class="fa-solid fa-plus"></i></a>
         </div>
     </div>
     <div class="mt-[50px] mb-[20px] w-fit cursor-pointer">

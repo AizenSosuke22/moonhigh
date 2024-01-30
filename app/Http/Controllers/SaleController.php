@@ -40,6 +40,12 @@ class SaleController extends Controller
         return view('client.service', compact('services', 'category'));
     }
 
+    public function create(){
+        $services = Product::all();
+        $services->load('sale');
+        return view('admin.sale.test', compact('services'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -48,18 +54,17 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        foreach($request->service as $item){
+            $service = Product::find($item);
+            $newprice = $service->price; 
+            $newprice -= $newprice*($request->percent/100);
+            Sale::create([
+                'product_id' => $service->id,
+                'price' => $newprice
+            ]);
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect('/sales');
     }
 
     /**
