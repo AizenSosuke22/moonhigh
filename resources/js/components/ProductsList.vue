@@ -23,12 +23,14 @@
                         <p class="text-[12px] font-[600] mt-2 text-[#1f2937] line-through" dir="rtl">{{ item.price }} ر.س</p>
                         <p class="text-[12px] font-[700] mt-2 text-[red]" dir="rtl">{{ item.sale.price }} ر.س</p>
                     </div>
-                    <a v-if="item.type == 'خدمة'" class="block w-full text-center px-4 py-2 font-[600] text-[#a288a6] hover:bg-[#a288a6] hover:text-white rounded-[10px] border-[1px] border-[#a288a6] text-[13px] mt-4" href="#">احجز الآن <i class="fa-solid fa-clock"></i></a>
-                    <a v-if="item.type == 'منتوج'" class="block w-full text-center px-4 py-2 font-[600] text-[#a288a6] hover:bg-[#a288a6] hover:text-white rounded-[10px] border-[1px] border-[#a288a6] text-[13px] mt-4" href="#">اشتري الآن <i class="fa-solid fa-clock"></i></a>
+                    <a v-if="item.type == 'خدمة'" class="block w-full text-center px-4 py-2 font-[600] text-[#a288a6] hover:bg-[#a288a6] hover:text-white rounded-[10px] border-[1px] border-[#a288a6] text-[13px] mt-4" :href="'https://wa.me/'+contact.whatsapp">احجز الآن <i class="fa-solid fa-clock"></i></a>
+                    <a v-if="item.type == 'منتوج'" class="block w-full text-center px-4 py-2 font-[600] text-[#a288a6] hover:bg-[#a288a6] hover:text-white rounded-[10px] border-[1px] border-[#a288a6] text-[13px] mt-4" :href="'https://wa.me/'+contact.whatsapp">اشتري الآن <i class="fa-solid fa-clock"></i></a>
                 </div>
-                <div @click="addToCart(item)" class="cursor-pointer opacity-80 hover:opacity-100 flex items-center justify-center rounded-full bg-white absolute top-[14px] left-[20px] text-[#6b7280] border-[1px] size-[38px]">
-                    <img class="size-[18px]" :src="'/icons/heart.png'" alt="">
-                </div>
+                <form method="POST" action="/wishlist" class="cursor-pointer opacity-80 hover:opacity-100 flex items-center justify-center rounded-full bg-white absolute top-[14px] left-[20px] text-[#6b7280] border-[1px] size-[38px]">
+                    <button type="submit"><img class="size-[18px]" :src="'/icons/heart.png'" alt=""></button>
+                    <input type="hidden" name="_token" :value="csrfToken">
+                    <input type="hidden" name="product_id" :value="item.id">
+                </form>
             </div>
         </section>
         <div v-if="display.length > 0 && display.length > end" @click="loadmore()" class="w-fit text-center px-6 cursor-pointer py-2 mt-[20px] font-[600] mx-auto bg-[#a288a6] text-white rounded-[10px] border-[1px] border-[#a288a6] text-[13px]">تحميل المزيد</div>
@@ -45,11 +47,12 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue'
-const props = defineProps(['data', 'category'])
+const props = defineProps(['data', 'category', 'contact'])
 const display = ref([])
 const filter = ref('recent')
-const perpage = ref(20)
+const perpage = ref(10)
 const end = ref(perpage.value)
+const csrfToken = ref('')
 const displayed = computed(() => {
     if(filter.value == 'high'){
         return display.value.sort((a,b) => b.price - a.price)
@@ -64,16 +67,9 @@ const loadmore = () => {
         end.value += perpage.value
 }
 
-const addToCart = (item) => {
-    let cart = JSON.parse(localStorage.getItem('cart')) || []
-    if (!cart.find(x => x.id == item.id)) {
-        cart.push(item)
-    }
-    localStorage.setItem('cart', JSON.stringify(cart))
-}
-
 onMounted(() => {
     display.value = props.data
+    csrfToken.value = document.querySelector('meta[name="csrf-token"]').getAttribute('content') || ''
 })
 </script>
 

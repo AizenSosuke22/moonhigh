@@ -64,6 +64,10 @@
                 @endforeach
             </select>
         </div>
+        <div class="my-4">
+            <label for="" class="text-[14px]">الوصف</label>
+            <textarea name="description" class="w-full border text-[15px] px-4 py-2 rounded-md bg-[#f0f0f041] mt-2 outline-none resize-none h-[200px]"></textarea>
+        </div>
 
         <div class="flex mt-8 w-fit ml-auto gap-x-4">
           <a href="{{ url('/products') }}" class="block cursor-pointer w-fit text-[14px] rounded-[5px] min-w-[200px] text-center px-4 py-2 text-black border">الغاء</a>

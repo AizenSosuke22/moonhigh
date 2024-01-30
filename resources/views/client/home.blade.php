@@ -2,10 +2,10 @@
 @section('title', 'صالون القمر العالي')
 @section('body')
     <header class="h-fit bgimage flex sm:w-full md:w-[95%] lg:w-[95%] xl:w-[90%] mx-auto relative">
-        <div class="absolute h-fit top-0 left-0 sm:w-[100px] md:w-[120px]">
+        <!-- <div class="absolute h-fit top-0 left-0 sm:w-[100px] md:w-[120px]">
             <h1 class="absolute sm:right-[21px] md:right-[22px] text-white font-bold sm:top-[32px] md:top-[35px] sm:text-[14px] md:text-[18px]">-30%</h1>
             <img class="block w-full" src="{{ url('/images/alert.png') }}" alt="">
-        </div>
+        </div> -->
         <div class="sm:w-[100%] md:w-[100%] lg:w-[50%] pt-[60px] pl-[50px] relative sm:hidden md:block">
             {{-- <img class="block absolute left-[-140px] bottom-[-150px] object-cover" src="{{ url('/images/asset.png') }}" alt=""> --}}
             <img class="block absolute top-0 bottom-0 left-0 object-cover" src="{{ url('/images/asset.png') }}" alt="">
@@ -23,8 +23,8 @@
                 <div class="bg-gradient-to-br from-purple-400 to-gray-300 cursor-pointer text-white sm:text-[10px] md:text-[11px] lg:text-[11px] xl:text-[12px] py-1 rounded-full px-3"><i class="fa-solid fa-xmark"></i> العناية بالجسم</div>
             </div>
             <div class="flex sm:w-fit md:w-auto mx-auto sm:gap-x-[20px] md:gap-x-[30px] lg:gap-x-[60px] xl:gap-x-[100px] mt-[50px] md:pr-6">
-                <a href="#" class="block w-fit h-fit px-4 sm:min-w-[120px] md:min-w-[120px] lg:min-w-[160px] sm:text-[14px] md:text-[13px] lg:text-[15px] text-center py-1 font-bold sm:bg-[#8B6192] md:bg-[#a288a6] text-white">احجز الان</a>
-                <a href="#" class="block w-fit h-fit px-4 sm:min-w-[120px] md:min-w-[120px] lg:min-w-[160px] sm:text-[14px] md:text-[13px] lg:text-[15px] text-center py-[2px] font-bold bg-transparent text-black border-t-[2px] border-black border-b-[2px]">تصفح الخدمات</a>
+                <a href="https://wa.me/{{ $footerData['whatsapp'] }}" class="block w-fit h-fit px-4 sm:min-w-[120px] md:min-w-[120px] lg:min-w-[160px] sm:text-[14px] md:text-[13px] lg:text-[15px] text-center py-1 font-bold sm:bg-[#8B6192] md:bg-[#a288a6] text-white">احجز الان</a>
+                <a href="{{ url('/services') }}" class="block w-fit h-fit px-4 sm:min-w-[120px] md:min-w-[120px] lg:min-w-[160px] sm:text-[14px] md:text-[13px] lg:text-[15px] text-center py-[2px] font-bold bg-transparent text-black border-t-[2px] border-black border-b-[2px]">تصفح الخدمات</a>
             </div>
         </div>
     </header>
@@ -35,31 +35,24 @@
             <p class="text-center md:text-[14px] lg:text-[16px] xl:text-[18px] text-[#852294] font-[500] mt-[14px]">تجربة استثنائية مع خدماتنا الاستثنائية للعناية بك وبجمالك</p>
             <div class="sm:hidden md:grid md:w-[90%] lg:w-[90%] xl:w-[80%] mt-[40px] mx-auto grid-cols-2 sm:gap-y-[15px] sm:gap-x-[10px] md:gap-x-[20px] lg:gap-x-[50px]">
                 <div class="w-full sm:h-[300px] md:h-[400px] lg:h-[430px] xl:h-[450px] relative">
-                    <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="#">صبغات الشعر</a>
+                    <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="{{ url('/subcategories/خدمات الشعر#صبغات_الشعر') }}">صبغات الشعر</a>
                     <img class="block rounded-[20px] object-cover object-right-top w-full h-full" src="{{ url('images/color.jpg') }}" alt="">
                 </div>
                 <div class="w-full sm:h-[290px] md:h-[400px] lg:h-[430px] xl:h-[450px] grid grid-cols-2 grid-rows-2 sm:gap-2 md:gap-4">
                     <div class="w-full h-full relative">
-                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="#">مكياج</a>
+                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="{{ url('/subcategories/المكياج') }}">مكياج</a>
                         <img class="w-full h-full object-cover rounded-[20px] block" src="{{ url('images/makeup.png') }}" alt="">
                     </div>
                     <div class="w-full h-full relative">
-                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 sm:w-[90%] md:w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="#">معالجات الشعر</a>
+                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 sm:w-[90%] md:w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="{{ url('/subcategories/المعالجات') }}">معالجات الشعر</a>
                         <img class="w-full h-full object-top object-cover rounded-[20px] block" src="{{ url('images/hair.png') }}" alt="">
                     </div>
                     <div class="w-full h-full relative col-span-2">
-                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="#">حمام مغربي</a>
+                        <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="{{ url('/subcategories/قسم العناية#حمام_مغربي') }}">حمام مغربي</a>
                         <img class="w-full h-full object-cover rounded-[20px] block" src="{{ url('images/hamam.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
-            {{-- <div class="flex">
-                <div class="w-[200px] h-[200px] relative">
-                    <a class="bg-gradient-to-br from-purple-400 to-gray-300 block absolute left-0 right-0 w-fit mx-auto bottom-4 sm:px-[10px] sm:py-[4px] md:px-4 md:py-2 font-bold lg:min-w-[150px] sm:text-[11px] md:text-[12px] lg:text-[15px] text-center" href="#">صبغات الشعر</a>
-                    <img class="block rounded-[20px] object-cover object-right-top w-full h-full" src="{{ url('images/color.jpg') }}" alt="">
-                </div>
-
-            </div> --}}
             <div class="w-[95%] mx-auto pt-[30px] sm:block md:hidden">
                 <proservices />
             </div>
@@ -101,7 +94,7 @@
             </div>
         </section>
 
-        <section class="w-full sm:py-[40px] md:py-[70px] md:flex items-center">
+        <section id="who" class="w-full sm:py-[40px] md:py-[70px] md:flex items-center">
             <div class="w-full sm:px-[20px] md:px-[60px]">
                 <h1 class="text-right font-[600] sm:text-[20px] md:text-[25px]">من نحن ؟</h1>
                 <p class="mt-4 sm:text-[14px] md:text-[16px] md:ml-auto md:max-w-[600px]" dir="rtl">
@@ -120,7 +113,7 @@
             <features />
         </section>
 
-        <section class="w-full sm:py-[40px] md:py-[70px] md:flex items-center">
+        <section id="time" class="w-full sm:py-[40px] md:py-[70px] md:flex items-center">
             <div class="w-full sm:px-[20px] md:px-[60px]">
                 <h1 class="text-right font-[600] sm:text-[20px] md:text-[25px]">أوقات العمل</h1>
                 <p class="mt-4 sm:text-[14px] md:text-[16px] md:ml-auto md:max-w-[600px]" dir="rtl">
@@ -135,7 +128,7 @@
             </div>
         </section>
 
-        <section class="w-[90%] mx-auto sm:py-[40px] md:py-[70px] md:flex">
+        <section id="location" class="w-[90%] mx-auto sm:py-[40px] md:py-[70px] md:flex">
             <div class="sm:w-full md:w-[50%] sm:px-[20px] md:px-[60px] flex flex-col justify-center">
                 <h1 class="text-right font-[600] sm:text-[20px] md:text-[20px] lg:text-[25px]">موقع الصالون</h1>
                 <p class="mt-4 md:ml-auto sm:text-[13px] md:text-[14px] lg:text-[16px] lg:max-w-[600px]" dir="rtl">

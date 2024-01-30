@@ -63,7 +63,10 @@
                     <!-- <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a> -->
                     <a class="{{ request()->is('settings') ? 'active': '' }} font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/settings') }}"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
                     <!-- <a class="{{ request()->is('settings') ? 'active': '' }} font-[500] text-[13px] text-[#5c5c5c] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/settings') }}"><i class="fa-solid fa-gear text-[#b6b6c9] text-[17px] ml-[10px]"></i> الإعدادات</a> -->
-                    <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</a>
+                    <form action="{{ url('/logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -86,8 +89,11 @@
                 </div>
                 <div class="h-fit">
                     <!-- <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a> -->
-                    <a class="{{ request()->is('settings') ? 'active': '' }} font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
-                    <a class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="#"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</a>
+                    <a class="{{ request()->is('settings') ? 'active': '' }} font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2" href="{{ url('/settings') }}"><i class="fa-solid fa-gear text-[17px] ml-[10px]"></i> الإعدادات</a>
+                    <form action="{{ url('/logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="font-[600] text-[13px] text-[#b6b6c9] flex items-center px-[14px] py-[10px] rounded-md my-2"><i class="fa-solid fa-power-off text-[17px] ml-[10px]"></i> تسجيل الخروج</button>
+                    </form>
                 </div>
             </div>
         </div>

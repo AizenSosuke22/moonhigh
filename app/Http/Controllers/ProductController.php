@@ -86,7 +86,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'type' => $request->type,
-            'description' => ''
+            'description' => $request->description
         ]);
         
         $product->categories()->attach($request->category);
@@ -187,6 +187,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->type = $request->type;
+        $product->description = $request->description;
         $product->save();
     
         // Sync categories

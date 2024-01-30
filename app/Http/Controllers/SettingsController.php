@@ -26,7 +26,8 @@ class SettingsController extends Controller
         if (File::exists($jsonFilePath)) {
             $data = json_decode(File::get($jsonFilePath), true);
 
-            $data['facebook'] = $request->facebook;
+            $data['phone'] = $request->phone;
+            $data['title'] = $request->title;
             $data['instagram'] = $request->instagram;
             $data['tiktok'] = $request->tiktok;
             $data['whatsapp'] = $request->whatsapp;

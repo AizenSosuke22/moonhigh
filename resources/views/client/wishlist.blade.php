@@ -7,6 +7,7 @@
         <i class="fa-solid fa-angle-left block text-[10px]"></i>
         <a href="javascript:void(0);" class="block">قائمة المتمنيات</a>
     </div>
-    <wishlist />
+    
+    <wishlist :data="{{Auth()->user()->wishlist->load('product.sale')}}"/>
 </section>
 @endsection

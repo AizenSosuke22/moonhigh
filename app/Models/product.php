@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Category;
 use App\Models\Sale;
+use App\Models\Review;
 
 class product extends Model
 {
@@ -23,5 +24,9 @@ class product extends Model
 
     public function sale(){
         return $this->hasOne(Sale::class);
+    }
+
+    public function reviews(){
+        return $this->hasMany(Review::class);
     }
 }

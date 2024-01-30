@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('title', 'طلب كلمة المرور')
+@section('title', 'إنشاء حساب')
 @section('body')
 <div>
     <div dir="rtl" class="bg-black w-full min-h-screen bg-cover bg-[url('https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] flex lg:flex-row sm:flex-col sm:py-[100px] lg:py-8 gap-y-10">
@@ -21,8 +21,20 @@
                     @csrf
                     <div class="flex-1 mt-6">
                         <label class="block mb-2 text-sm text-gray-600">البريد الإلكتروني</label>
-                        <input type="text" id="email" name="email" value="{{ old('email') }}" placeholder="البريد الإلكتروني" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md" />
+                        <input type="text" id="email" name="email" value="{{ old('email', $request->email) }}" placeholder="البريد الإلكتروني" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                    </div>
+
+                    <div class="flex-1 mt-6">
+                        <label class="block mb-2 text-sm text-gray-600">كلمة السر</label>
+                        <input type="password" id="password" name="password" placeholder="كلمة السر" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md" />
+                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    </div>
+                    
+                    <div class="flex-1 mt-6">
+                        <label class="block mb-2 text-sm text-gray-600">تأكيد كلمة المرور</label>
+                        <input type="password" id="password" name="password_confirmation" placeholder="تأكيد كلمة المرور" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md" />
+                        <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
                     <button type="submit" id="login" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#a288a6] rounded-md focus:outline-none focus:ring focus:ring-[#00000082] focus:ring-opacity-50">

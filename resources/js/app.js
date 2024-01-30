@@ -18,6 +18,7 @@ import WishList from './components/WishList.vue'
 import SearchField from './components/SearchField.vue'
 import AddCart from './components/AddCart.vue'
 import NewsLetter from './components/NewsLetter.vue'
+import SubCat from './components/SubCat.vue'
 
 const app = createApp()
 
@@ -33,5 +34,6 @@ app.component('wishlist', WishList)
 app.component('searchfield', SearchField)
 app.component('addcart', AddCart)
 app.component('newsletter', NewsLetter)
+app.component('subcat', SubCat)
 
 app.mount('#app')

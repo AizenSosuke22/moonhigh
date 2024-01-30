@@ -46,11 +46,11 @@ $(document).ready(function(){
         const find = list.find(item => item.title == $(this).text().trim())
         $('#menutitle').text($(this).text().trim())
         $('#menuul').html(`
-            <li class="block py-[18px] px-4 border-b"><a class="block" href="/services/${$(this).text().trim()}">عرض الكل</a></li>
+            <li class="block py-[18px] px-4 border-b"><a class="block" href="/subcategories/${$(this).text().trim()}">عرض الكل</a></li>
         `)
         find.items.forEach((item) => {
             $('#menuul').append(`
-                <li class="block py-[18px] px-4 border-b"><a href="/services/${item}">${item}</a></li>
+                <li class="block py-[18px] px-4 border-b"><a href="/subcategories/${$(this).text().trim()}#${item.replace(/ /g, '_')}">${item}</a></li>
             `)
         })
     })

@@ -43,10 +43,10 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->attachRole('admin');
+        $user->attachRole('user');
         event(new Registered($user));
 
-        // Auth::login($user);
+        Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }
